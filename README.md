@@ -2,7 +2,7 @@
 
 Whitemane Rebuffed items inside AtlasLoot.
 
-Works with the AtlasLoot of the Whitemane launcher: AtlasLoot Enhanced v5.11.04 for WotLK 3.3.5.
+Works with the AtlasLoot of the Whitemane launcher: AtlasLoot Enhanced for WotLK 3.3.5.
 The addon is a folder of its own. It changes no AtlasLoot file.
 
 ## Changes
