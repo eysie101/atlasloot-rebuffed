@@ -8,7 +8,7 @@ This is the share edition. It has no scan.
 
 REQUIREMENTS
 
-AtlasLoot Enhanced v5.11.04 for WotLK 3.3.5.
+AtlasLoot Enhanced for WotLK 3.3.5.
 It needs the folders AtlasLoot and AtlasLoot_WrathoftheLichKing.
 Crafting pages also need the folder AtlasLoot_Crafting.
 
