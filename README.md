@@ -7,11 +7,9 @@ The addon is a folder of its own. It changes no AtlasLoot file.
 
 ## Changes
 
-- **Epic checkbox**: a blue item shows its violet Whitemane version. Also on crafting pages.
+- **Rare->Epic checkbox**: a blue item shows its violet Whitemane version. Also on crafting pages.
 - **Upgrade selector**: `Upgrade: < +0 >` shows each item at the chosen upgrade step (up to +5). Items without that step are greyed out.
-- **Whitemane Legendaries**: a page after AtlasLoot's "Legendary Items".
-- **Whitemane Gear and Glyphs**: Whitemane items that no AtlasLoot page lists.
-- **Collections, Whitemane**: legendaries, gear, glyphs and 14 currencies. A currency page lists what a vendor sells for it.
+- **Whitemane**: legendaries, gear, glyphs, 14 currencies (in Collections; the legendaries also after AtlasLoot's "Legendary Items").
 - **Vendor prices**: read from the vendors you open. No query goes to the server. `/alr vendor` lists them.
 - **Item names**: the game's name where AtlasLoot's differs (66 items, English clients).
 
