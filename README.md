@@ -1,6 +1,6 @@
 # AtlasLoot Rebuffed
 
-Whitemane Rebuffed items inside AtlasLoot.
+Whitemane Rebuffed AtlasLoot Module
 
 Works with the AtlasLoot of the Whitemane launcher: AtlasLoot Enhanced for WotLK 3.3.5.
 The addon is a folder of its own. It changes no AtlasLoot file.
