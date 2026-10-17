@@ -1,0 +1,11 @@
+## Interface: 30300
+## Title: AtlasLoot |cff33ff99Rebuffed|r
+## Notes: Whitemane Rebuffed items in AtlasLoot. The "Epic" checkbox shows the violet Whitemane version of blue items, also on crafting pages; it appears on pages that have such items. The Upgrade selector shows upgrade steps and greys out items without the chosen step; it appears on pages with upgradeable items and starts at +0. Whitemane Legendaries follow "Legendary Items". Vendor prices come from the vendors you open (/alr vendor). Collections > Whitemane lists the legendaries and 14 currencies. Share edition: without the scan.
+## Version: 0.2.21-share
+## OptionalDeps: AtlasLoot
+## SavedVariables: ALR_Settings, ALR_Vendor
+Data.lua
+VendorData.lua
+Module.lua
+Vendor.lua
+Currency.lua
