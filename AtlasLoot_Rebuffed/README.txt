@@ -1,4 +1,4 @@
-AtlasLoot Rebuffed 0.2.21
+AtlasLoot Rebuffed 0.2.22
 
 Whitemane Rebuffed items inside AtlasLoot Enhanced.
 The addon is a folder of its own. It changes no AtlasLoot file.
@@ -56,6 +56,20 @@ UPGRADE SELECTOR
 - It starts at +0 at every login.
 
 
+ASCENDED SELECTOR
+
+'Ascended: < 0 >' sits right of the upgrade selector.
+
+- It shows only on pages with at least one item that has an Ascended version.
+- '>' and '<' step through 0, I, II and III.
+- I comes with Ulduar, II with Trial of the Crusader, III with Icecrown Citadel.
+- Each item shows its Ascended version of that tier. It wins over Epic and the upgrade step.
+- An item without that version is greyed out.
+- '0' shows no Ascended version and greys out nothing.
+- 350 items have Ascended versions.
+- It starts at 0 at every login.
+
+
 WHITEMANE LEGENDARIES
 
 - AtlasLoot's page 'Legendary Items' has a Next button to them.
@@ -67,7 +81,7 @@ WHITEMANE GEAR AND GLYPHS
 
 Whitemane items that no AtlasLoot page lists.
 
-- Whitemane Gear: 73 items of item level 200 and up, grouped by item level.
+- Whitemane Gear: 84 items of item level 200 and up, grouped by item level.
 - Whitemane Glyphs: 5 glyphs.
 - Both are in Collections, Whitemane. AtlasLoot's search finds them.
 
@@ -93,7 +107,7 @@ COLLECTIONS, WHITEMANE
 
 CORRECTED ITEM NAMES
 
-- For 66 items AtlasLoot's name differs from the game's. The game's name is shown.
+- For 67 items AtlasLoot's name differs from the game's. The game's name is shown.
 - Example: 'Valorous Crypstalker Tunic' becomes 'Valorous Cryptstalker Tunic'.
 - This works on English clients only.
 

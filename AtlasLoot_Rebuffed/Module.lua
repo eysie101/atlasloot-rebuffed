@@ -12,6 +12,8 @@ local epicByName = {}
 local cacheLegendaries = {}
 local check
 local selector
+local ascSelector
+local ROMAN = { [0] = "0", "I", "II", "III" }
 local current = { crafting = false, menu = false }
 local loggedIn = false
 
@@ -52,6 +54,9 @@ local function twinOf(id, text)
 end
 
 local function shownAs(id, text)
+  local tier = ALR_Settings.ascended or 0
+  local asc = tier > 0 and ALR_ASCENDED and ALR_ASCENDED[id]
+  if asc and asc[tier] then return asc[tier][1], asc[tier][2], 4 end
   local step = ALR_Settings.upgrade or 0
   local chain = step > 0 and ALR_UPGRADE_CHAINS and ALR_UPGRADE_CHAINS[id]
   if chain and #chain > 0 then
@@ -113,9 +118,9 @@ local function pageInfo()
   local id = r and r[1]
   local data = id and AtlasLoot_Data and AtlasLoot_Data[id]
   if current.menu or type(data) ~= "table" or SKIP[id] or ownPage(id) then
-    return nil, false, false
+    return nil, false, false, false
   end
-  local twins, chains = false, false
+  local twins, chains, asc = false, false, false
   for k, entry in pairs(data) do
     if type(k) == "number" and type(entry) == "table" then
       local base = entry.alrStock or entry[2]
@@ -123,19 +128,20 @@ local function pageInfo()
         if twinOf(base, entry.alrText or entry[4]) then twins = true end
         local c = ALR_UPGRADE_CHAINS and ALR_UPGRADE_CHAINS[base]
         if c and #c > 0 then chains = true end
+        if ALR_ASCENDED and ALR_ASCENDED[base] then asc = true end
       elseif type(entry[2]) == "string" and string.sub(entry[2], 1, 1) == "s" and tonumber(entry.alrCraft or entry[3]) then
         if twinOf(tonumber(entry.alrCraft or entry[3]), entry.alrText or entry[4]) then twins = true end
       end
     end
   end
-  return data, twins, chains
+  return data, twins, chains, asc
 end
 
 local NAME_DIM = 0.45
 
 local function decorate()
   local filter = AtlasLootFilterCheck
-  local data, twins, chains = pageInfo()
+  local data, twins, chains, asc = pageInfo()
   if check then
     if twins and (current.crafting or (filter and filter:IsShown())) then check:Show() else check:Hide() end
   end
@@ -143,20 +149,30 @@ local function decorate()
     local on = chains and filter and filter:IsShown()
     for _, f in ipairs(selector) do if on then f:Show() else f:Hide() end end
   end
+  if ascSelector then
+    local on = asc and filter and filter:IsShown()
+    for _, f in ipairs(ascSelector) do if on then f:Show() else f:Hide() end end
+  end
   for i = 1, 30 do
     local icon, name = _G["AtlasLootItem_" .. i .. "_Icon"], _G["AtlasLootItem_" .. i .. "_Name"]
     if icon and icon.SetDesaturated then icon:SetDesaturated(nil) end
     if name and name.SetAlpha then name:SetAlpha(1) end
   end
-  local step = ALR_Settings.upgrade or 0
-  if step == 0 or not chains then return end
+  local step, tier = ALR_Settings.upgrade or 0, ALR_Settings.ascended or 0
+  local upOn, ascOn = step > 0 and chains, tier > 0 and asc
+  if not upOn and not ascOn then return end
   local short = {}
   for k, entry in pairs(data) do
     if type(k) == "number" and type(entry) == "table" then
       local base = entry.alrStock or entry[2]
       if type(base) == "number" and base > 0 then
+        local a = ALR_ASCENDED and ALR_ASCENDED[base]
         local c = ALR_UPGRADE_CHAINS and ALR_UPGRADE_CHAINS[base]
-        if not c or #c < step then short[entry[2]] = true end
+        if ascOn then
+          if not (a and a[tier]) then short[entry[2]] = true end
+        elseif not c or #c < step then
+          short[entry[2]] = true
+        end
       end
     end
   end
@@ -298,6 +314,59 @@ local function makeUpgradeSelector()
   end
 end
 
+local function makeAscendedSelector()
+  if ascSelector or not AtlasLootFilterCheck or not selector then return end
+  local filter = AtlasLootFilterCheck
+  local parent = filter:GetParent()
+  local label = parent:CreateFontString("AtlasLootRebuffedAscendedLabel", "OVERLAY", "GameFontNormal")
+  label:SetPoint("LEFT", selector[4], "RIGHT", 16, 0)
+  label:SetText("Ascended:")
+  local down = CreateFrame("Button", "AtlasLootRebuffedAscendedDown", parent, "UIPanelButtonTemplate")
+  down:SetSize(22, 20)
+  down:SetText("<")
+  down:SetPoint("LEFT", label, "RIGHT", 6, 0)
+  local value = parent:CreateFontString("AtlasLootRebuffedAscendedValue", "OVERLAY", "GameFontHighlight")
+  value:SetWidth(26)
+  value:SetPoint("LEFT", down, "RIGHT", 4, 0)
+  local up = CreateFrame("Button", "AtlasLootRebuffedAscendedUp", parent, "UIPanelButtonTemplate")
+  up:SetSize(22, 20)
+  up:SetText(">")
+  up:SetPoint("LEFT", value, "RIGHT", 4, 0)
+  local function setTier(n)
+    n = math.max(0, math.min(3, n))
+    ALR_Settings.ascended = n
+    value:SetText(ROMAN[n])
+    apply()
+    if ALR_ApplyVendorPrices then ALR_ApplyVendorPrices() end
+    refresh()
+  end
+  down:SetScript("OnClick", function() setTier((ALR_Settings.ascended or 0) - 1) end)
+  up:SetScript("OnClick", function() setTier((ALR_Settings.ascended or 0) + 1) end)
+  local function tip(self)
+    local n = 0
+    for _ in pairs(ALR_ASCENDED or {}) do n = n + 1 end
+    GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+    GameTooltip:SetText("Ascended")
+    GameTooltip:AddLine("Shows each dungeon item as its Ascended version: I comes with Ulduar, II with Trial of the Crusader, III with Icecrown Citadel. An item without that version is greyed out. 0 shows AtlasLoot unchanged. Starts at 0 at every login.", 1, 1, 1, true)
+    GameTooltip:AddLine(string.format("%d items have Ascended versions.", n), 0.7, 0.7, 0.7, true)
+    GameTooltip:Show()
+  end
+  for _, b in ipairs({ down, up }) do
+    b:SetScript("OnEnter", tip)
+    b:SetScript("OnLeave", function() GameTooltip:Hide() end)
+  end
+  value:SetText(ROMAN[math.max(0, math.min(3, ALR_Settings.ascended or 0))])
+  ascSelector = { label, down, value, up }
+  decorate()
+  if ElvUI then
+    pcall(function()
+      local E = unpack(ElvUI)
+      local S = E and E.GetModule and E:GetModule("Skins", true)
+      if S and S.HandleButton then S:HandleButton(down); S:HandleButton(up) end
+    end)
+  end
+end
+
 local function buildLegendaries()
   if not AtlasLoot_Data or not AtlasLoot_TableNames then return end
   local seen = {}
@@ -425,6 +494,7 @@ frame:SetScript("OnEvent", function(self, event, arg1)
       ALR_Settings = ALR_Settings or {}
       if ALR_Settings.epic == nil then ALR_Settings.epic = false end
       if ALR_Settings.upgrade == nil then ALR_Settings.upgrade = 0 end
+      if ALR_Settings.ascended == nil then ALR_Settings.ascended = 0 end
     elseif loggedIn and type(arg1) == "string" and string.find(arg1, "^AtlasLoot") then
       linkLegendaries()
       apply()
@@ -432,12 +502,14 @@ frame:SetScript("OnEvent", function(self, event, arg1)
   elseif event == "PLAYER_LOGIN" then
     loggedIn = true
     ALR_Settings.upgrade = 0
+    ALR_Settings.ascended = 0
     readClientCache()
     buildLegendaries()
     buildExtraPages()
     linkLegendaries()
     makeCheck()
     makeUpgradeSelector()
+    makeAscendedSelector()
     apply()
   end
 end)
