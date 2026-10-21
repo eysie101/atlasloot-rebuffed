@@ -10,7 +10,7 @@ The addon is a folder of its own. It changes no AtlasLoot file.
 - **Rare->Epic checkbox**: a blue item shows its violet Whitemane version. Also on crafting pages.
 - **Upgrade selector**: `Upgrade: < +0 >` shows each item at the chosen upgrade step (up to +5). Items without that step are greyed out.
 - **Ascended selector**: `Ascended: < 0 >` shows each dungeon item as its Ascended I / II / III version (Ulduar / Trial of the Crusader / Icecrown Citadel). Items without that version are greyed out.
-- **Whitemane**: legendaries, gear, glyphs, 14 currencies (in Collections; the legendaries also after AtlasLoot's "Legendary Items"; the glyphs also on the Crafting > Inscription pages).
+- **Whitemane**: legendaries, gear, glyphs, 14 currencies (in Collections; the legendaries also after AtlasLoot's "Legendary Items"; the glyphs also on the Crafting > Inscription pages). The gear pages list the items of item level 200 and up and the Secondhand set.
 - **Vendor prices**: read from the vendors you open. No query goes to the server. `/alr vendor` lists them.
 - **Item names**: the game's name where AtlasLoot's differs (66 items, English clients).
 
@@ -38,8 +38,9 @@ server-side; the addon shows them once the items have been seen in game.
   table with 17 steps.
 - Master Riding.
 - Mount tooltips show ground and flight speed by riding skill (441 mounts).
-- 119 new item ids: a gear set per armour class with necks, rings, trinkets, cloaks, relics and weapons (98 ids), a
-  holdable, 20 containers and miscellaneous items.
+- The Secondhand set: 99 green items of item level 187 for level 80, one piece per slot and armour class, necks,
+  rings, trinkets, cloaks, relics, weapons and a Secondhand Rose, plus a Secondhand Armor Kit and a Secondhand Weapon
+  Kit per class (containers). The set is on the Whitemane Gear pages.
 - 23 new vendor prices in arena points or honor, plus Mark of Savagery; one in Echoes.
 - 14 new relic and set effects: Increased Flash of Light Healing, Seal Cost Reduced, Improved Moonfire, Devotion
   Armor Increased, Increased Lesser Healing Wave, Reduced Stormstrike Cost, Claw and Rake Damage Bonus, Increased

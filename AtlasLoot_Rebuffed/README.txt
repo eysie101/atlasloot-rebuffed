@@ -1,4 +1,4 @@
-AtlasLoot Rebuffed 0.2.25
+AtlasLoot Rebuffed 0.2.26
 
 Whitemane Rebuffed items inside AtlasLoot Enhanced.
 The addon is a folder of its own. It changes no AtlasLoot file.
@@ -81,7 +81,8 @@ WHITEMANE GEAR AND GLYPHS
 
 Whitemane items that AtlasLoot itself does not list.
 
-- Whitemane Gear: 84 items of item level 200 and up, grouped by item level.
+- Whitemane Gear: 183 items, grouped by item level: item level 200 and up, and the Secondhand set (item level 187,
+  one piece per slot and armour class, relics, weapons).
 - Whitemane Glyphs: 5 glyphs.
 - Both are in Collections, Whitemane. AtlasLoot's search finds them.
 
