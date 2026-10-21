@@ -480,6 +480,57 @@ local function buildExtraPages()
   end
 end
 
+local earlyNames = {}
+local function pageName(base, n)
+  local first = AtlasLoot_TableNames[base .. "1"]
+  return { (first and first[1] or base) .. " " .. n, first and first[2] or "AtlasLootCrafting" }
+end
+local function placeGlyphs()
+  if not AtlasLoot_Data or not AtlasLoot_TableNames then return end
+  local earlyBase = {}
+  for _, b in pairs(earlyNames) do earlyBase[b] = true end
+  for _, g in ipairs(ALR_GLYPH_PLACES or {}) do
+    local item, spell, base = g[1], g[2], g[4]
+    if not AtlasLoot_Data[base .. "1"] and AtlasLoot_TableNames[base .. "1"] and not earlyBase[base] then
+      local k = 1
+      while AtlasLoot_TableNames[base .. k] do k = k + 1 end
+      AtlasLoot_TableNames[base .. k] = pageName(base, k)
+      earlyNames[base .. k], earlyBase[base] = base, true
+    end
+    local n, last, found = 1, nil, false
+    while AtlasLoot_Data[base .. n] do
+      last = base .. n
+      for _, e in ipairs(AtlasLoot_Data[last]) do
+        if e[2] == item or e[3] == tostring(item) then found = true end
+      end
+      n = n + 1
+    end
+    if last and not found then
+      local t, slot = AtlasLoot_Data[last], 0
+      for _, e in ipairs(t) do if type(e[1]) == "number" and e[1] > slot then slot = e[1] end end
+      if slot >= 30 then
+        local key = base .. n
+        local nt = { Back = t.Back, Prev = last, Next = t.Next }
+        t.Next = key
+        AtlasLoot_Data[key] = nt
+        AtlasLoot_TableNames[key] = pageName(base, n)
+        t, slot = nt, 0
+      end
+      if spell > 0 then
+        table.insert(t, { slot + 1, "s" .. spell, tostring(item), g[3], "=ds=Whitemane" })
+      else
+        table.insert(t, { slot + 1, item, "", g[3], "=ds=Whitemane, no recipe" })
+      end
+    end
+  end
+  for key, base in pairs(earlyNames) do
+    if AtlasLoot_Data[base .. "1"] then
+      if not AtlasLoot_Data[key] then AtlasLoot_TableNames[key] = nil end
+      earlyNames[key] = nil
+    end
+  end
+end
+
 local function linkLegendaries()
   local stock = AtlasLoot_Data and AtlasLoot_Data["Legendaries"]
   if stock and AtlasLoot_Data[PAGE] and not stock.Next then stock.Next = PAGE end
@@ -497,6 +548,7 @@ frame:SetScript("OnEvent", function(self, event, arg1)
       if ALR_Settings.ascended == nil then ALR_Settings.ascended = 0 end
     elseif loggedIn and type(arg1) == "string" and string.find(arg1, "^AtlasLoot") then
       linkLegendaries()
+      placeGlyphs()
       apply()
     end
   elseif event == "PLAYER_LOGIN" then
@@ -507,6 +559,7 @@ frame:SetScript("OnEvent", function(self, event, arg1)
     buildLegendaries()
     buildExtraPages()
     linkLegendaries()
+    placeGlyphs()
     makeCheck()
     makeUpgradeSelector()
     makeAscendedSelector()

@@ -2751,3 +2751,10 @@ ALR_WHITEMANE_ITEMS = {
   { 104001, "=q1=Glyph of Omen of Clarity", "=ds=Glyph", 45, "glyph" },
   { 131085, "=q1=Glyph of Stars", "=ds=Glyph", 0, "glyph" },
 }
+ALR_GLYPH_PLACES = {
+  { 104002, 81004, "=q1=Glyph of Reckoning", "Inscription_PaladinMajor" },
+  { 104003, 81018, "=q1=Glyph of Shattering Throw", "Inscription_WarriorMinor" },
+  { 1401670, 9250849, "=q1=Glyph of Quick Pain", "Inscription_PriestMajor" },
+  { 104001, 81003, "=q1=Glyph of Omen of Clarity", "Inscription_DruidMajor" },
+  { 131085, 0, "=q1=Glyph of Stars", "Inscription_DruidMinor" },
+}
