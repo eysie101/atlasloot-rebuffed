@@ -16,12 +16,8 @@ The addon is a folder of its own. It changes no AtlasLoot file.
 
 ## Install
 
-1. Copy the folder `AtlasLoot_Rebuffed` into `<WoW folder>\Interface\AddOns`.
-2. Start WoW, or restart it.
+Copy the folder `AtlasLoot_Rebuffed` into `<WoW folder>\Interface\AddOns`.
 
-## Remove
-
-Delete the folder `AtlasLoot_Rebuffed`. AtlasLoot is as before.
 
 ## Whitemane changelog
 
