@@ -13,6 +13,7 @@ The addon is a folder of its own. It changes no AtlasLoot file.
 - **Whitemane**: legendaries, gear, glyphs, 14 currencies (in Collections; the legendaries also after AtlasLoot's "Legendary Items"; the glyphs also on the Crafting > Inscription pages). The gear pages list the items of item level 200 and up and the Secondhand set.
 - **Vendor prices**: read from the vendors you open. No query goes to the server. `/alr vendor` lists them.
 - **Item names**: the game's name where AtlasLoot's differs (66 items, English clients).
+- **Raid size button**: `Show Normal Loot` / `Show Heroic Loot` instead of 10 / 25 Man in the level-80 raids. Vault of Archavon keeps 10 / 25.
 
 ## Install
 

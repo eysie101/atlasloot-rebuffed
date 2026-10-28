@@ -1,4 +1,4 @@
-AtlasLoot Rebuffed 0.2.26
+AtlasLoot Rebuffed 0.2.27
 
 Whitemane Rebuffed items inside AtlasLoot Enhanced.
 The addon is a folder of its own. It changes no AtlasLoot file.
@@ -111,6 +111,15 @@ COLLECTIONS, WHITEMANE
 - A currency page lists the items that a vendor sold for it, cheapest first.
 - Open such a vendor once. The page fills at once.
 - The AtlasLoot title bar ends in 'Rebuffed'.
+
+
+RAID SIZE BUTTON
+
+AtlasLoot's button that switches between the loot of 10 and 25 players.
+
+- In the level-80 raids it reads 'Show Normal Loot' and 'Show Heroic Loot'. Whitemane calls the loot of 25 players Heroic.
+- 'Show Normal Loot' opens the page for 10 players, 'Show Heroic Loot' the page for 25 players.
+- In Vault of Archavon it stays 'Show 10 Man Loot' and 'Show 25 Man Loot'.
 
 
 CORRECTED ITEM NAMES
