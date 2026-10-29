@@ -12,22 +12,32 @@ The addon is a folder of its own. It changes no AtlasLoot file.
 - **Ascended selector**: `Ascended: < 0 >` shows each dungeon item as its Ascended I / II / III version (Ulduar / Trial of the Crusader / Icecrown Citadel). Items without that version are greyed out.
 - **Whitemane**: legendaries, gear, glyphs, 14 currencies (in Collections; the legendaries also after AtlasLoot's "Legendary Items"; the glyphs also on the Crafting > Inscription pages). The gear pages list the items of item level 200 and up and the Secondhand set.
 - **Vendor prices**: read from the vendors you open. No query goes to the server. `/alr vendor` lists them.
-- **Item names**: the game's name where AtlasLoot's differs (66 items, English clients).
+- **Item names**: the game's name where AtlasLoot's differs (68 items, English clients).
 - **Raid size button**: `Show Normal Loot` / `Show Heroic Loot` instead of 10 / 25 Man in the level-80 raids. Vault of Archavon keeps 10 / 25.
 
 ## Install
 
-1. Copy the folder `AtlasLoot_Rebuffed` into `<WoW folder>\Interface\AddOns`.
-2. Start WoW, or restart it.
+Copy the folder `AtlasLoot_Rebuffed` into `<WoW folder>\Interface\AddOns`.
 
-## Remove
-
-Delete the folder `AtlasLoot_Rebuffed`. AtlasLoot is as before.
 
 ## Whitemane changelog
 
 What the Whitemane client updates brought, as far as the client data shows it. Item names, stats and prices are
 server-side; the addon shows them once the items have been seen in game.
+
+### 2026-10-28
+
+- The Horseman's Ghoulish and Burning collections (helm, mantle, breastplate, cinch, greaves, treads, grips, cloak,
+  cowl) and the Ghoulish, Burning and Hallowed blade, great blade and bulwark: 27 cosmetic items of item level 1, plus
+  two ensembles.
+- Scarlet Box (one mount or companion the account does not have yet) and Whitemane Gift.
+- A Wartorn copy of Legplates of Inescapable Death.
+
+### 2026-10-22
+
+- Wartorn Tier 7 Heroic: 108 copies of item level 200 to 226 items under their stock id + 400000, 91 of them Valorous
+  set pieces.
+- 9 more Secondhand plate pieces, and 20 Secondhand Armor Kits named after a spec, two per class.
 
 ### 2026-10-21
 
@@ -39,9 +49,9 @@ server-side; the addon shows them once the items have been seen in game.
   table with 17 steps.
 - Master Riding.
 - Mount tooltips show ground and flight speed by riding skill (441 mounts).
-- The Secondhand set: 99 green items of item level 187 for level 80, one piece per slot and armour class, necks,
-  rings, trinkets, cloaks, relics, weapons and a Secondhand Rose, plus a Secondhand Armor Kit and a Secondhand Weapon
-  Kit per class (containers). The set is on the Whitemane Gear pages.
+- The Secondhand set: 99 green items of item level 187 for level 80: 1 cloth, 2 leather, 2 mail and 2 plate pieces per
+  armour slot (1 plate helm), necks, rings, trinkets, cloaks, shields, relics, weapons and a Secondhand Rose, plus a
+  Secondhand Armor Kit and a Secondhand Weapon Kit per class (containers). The set is on the Whitemane Gear pages.
 - 23 new vendor prices in arena points or honor, plus Mark of Savagery; one in Echoes.
 - 14 new relic and set effects: Increased Flash of Light Healing, Seal Cost Reduced, Improved Moonfire, Devotion
   Armor Increased, Increased Lesser Healing Wave, Reduced Stormstrike Cost, Claw and Rake Damage Bonus, Increased

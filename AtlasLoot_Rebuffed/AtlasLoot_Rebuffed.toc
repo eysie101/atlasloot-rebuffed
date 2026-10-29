@@ -1,7 +1,7 @@
 ## Interface: 30300
 ## Title: AtlasLoot |cff33ff99Rebuffed|r
 ## Notes: Whitemane Rebuffed items in AtlasLoot. The "Epic" checkbox shows the violet Whitemane version of blue items, also on crafting pages; it appears on pages that have such items. The Upgrade selector shows upgrade steps and greys out items without the chosen step; it appears on pages with upgradeable items and starts at +0. The Ascended selector shows the Ascended dungeon versions (I, II, III) and greys out items without one; it starts at 0. Whitemane Legendaries follow "Legendary Items". Vendor prices come from the vendors you open (/alr vendor). Collections > Whitemane lists the legendaries and 14 currencies. The Whitemane glyphs are also on AtlasLoot's Inscription pages of their class. In the level-80 raids AtlasLoot's 10/25 button reads Normal / Heroic, in Vault of Archavon 10 / 25. Share edition: without the scan.
-## Version: 0.2.27-share
+## Version: 0.2.29-share
 ## OptionalDeps: AtlasLoot
 ## SavedVariables: ALR_Settings, ALR_Vendor
 Data.lua

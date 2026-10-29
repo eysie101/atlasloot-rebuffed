@@ -1,4 +1,4 @@
-AtlasLoot Rebuffed 0.2.27
+AtlasLoot Rebuffed 0.2.29
 
 Whitemane Rebuffed items inside AtlasLoot Enhanced.
 The addon is a folder of its own. It changes no AtlasLoot file.
@@ -81,8 +81,9 @@ WHITEMANE GEAR AND GLYPHS
 
 Whitemane items that AtlasLoot itself does not list.
 
-- Whitemane Gear: 183 items, grouped by item level: item level 200 and up, and the Secondhand set (item level 187,
-  one piece per slot and armour class, relics, weapons).
+- Whitemane Gear: 195 items, grouped by item level: item level 200 and up, and the Secondhand set (item level 187:
+  armour of every armour class, one or more pieces per slot and class, and other gear such as cloaks, rings, relics and
+  weapons).
 - Whitemane Glyphs: 5 glyphs.
 - Both are in Collections, Whitemane. AtlasLoot's search finds them.
 
@@ -124,7 +125,7 @@ AtlasLoot's button that switches between the loot of 10 and 25 players.
 
 CORRECTED ITEM NAMES
 
-- For 67 items AtlasLoot's name differs from the game's. The game's name is shown.
+- For 68 items AtlasLoot's name differs from the game's. The game's name is shown.
 - Example: 'Valorous Crypstalker Tunic' becomes 'Valorous Cryptstalker Tunic'.
 - This works on English clients only.
 
