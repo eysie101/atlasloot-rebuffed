@@ -25,6 +25,12 @@ Copy the folder `AtlasLoot_Rebuffed` into `<WoW folder>\Interface\AddOns`.
 What the Whitemane client updates brought, as far as the client data shows it. Item names, stats and prices are
 server-side; the addon shows them once the items have been seen in game.
 
+### 2026-11-23
+
+- Death Knight Glyph of Army of the Dead, a minor glyph with an Inscription recipe. It is on the Whitemane Glyphs
+  page and on Crafting > Inscription > Minor Glyph - Death Knight.
+- Ascended Crest, an epic item of item level 80. Three vendor prices in the client cost 12, 15 or 20 Crests.
+
 ### 2026-10-28
 
 - The Horseman's Ghoulish and Burning collections (helm, mantle, breastplate, cinch, greaves, treads, grips, cloak,
